@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPX-AI小聚邀請函</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        
+        .invitation-card {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .glow {
+            text-shadow: 0 0 15px rgba(79, 209, 197, 0.5);
+        }
+        
+        .tech-border {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tech-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4fd1c5, transparent);
+            animation: borderFlow 4s linear infinite;
+        }
+        
+        @keyframes borderFlow {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .location-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: #4fd1c5;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: blink 1.5s infinite;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+        
+        .config-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 400px;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 50;
+            overflow-y: auto;
+        }
+        
+        .config-panel.active {
+            transform: translateX(0);
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(79, 209, 197, 0.9);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+        
+        .notification.show {
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4">
+    <div class="invitation-card tech-border rounded-xl max-w-md w-full mx-auto p-8">
+        <div class="text-center mb-8">
+            <div class="mb-2">
+                <svg class="w-16 h-16 mx-auto text-teal-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                </svg>
+            </div>
+            <h1 class="text-3xl font-bold text-teal-400 glow">邀請函</h1>
+            <div class="mt-2 text-gray-300">INVITATION</div>
+        </div>
+        
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-center mb-6 text-white">歡迎來到</h2>
+            <div class="text-center">
+                <div class="text-3xl font-bold text-teal-400 pulse">HPX-AI小聚</div>
+            </div>
+        </div>
+        
+        <div class="space-y-6 mb-8">
+            <div class="flex items-start">
+                <div class="mr-4 mt-1">
+                    <svg class="w-6 h-6 text-teal-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <div>
+                    <div class="text-gray-300 text-sm mb-1">時間</div>
+                    <div class="font-medium">2025/07/23 (三)</div>
+                    <div class="font-medium">晚上7點到9點</div>
+                    <div class="text-teal-400 text-sm mt-1">會準時開始，請勿遲到</div>
+                </div>
+            </div>
+            
+            <div class="flex items-start">
+                <div class="mr-4 mt-1">
+                    <svg class="w-6 h-6 text-teal-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                </div>
+                <div>
+                    <div class="text-gray-300 text-sm mb-1">地點</div>
+                    <div class="font-medium">Wee威易聯合辦公室-博愛店</div>
+                    <div class="text-sm">高雄市三民區博愛一路366號14樓</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <button id="confirmBtn" class="bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 px-6 rounded-full transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-opacity-50">
+                我會參加
+            </button>
+        </div>
+        
+        <div id="confirmMessage" class="mt-4 text-center text-teal-400 font-medium hidden">
+            已確認參加，期待您的蒞臨！
+        </div>
+        
+        <div class="mt-8 text-center">
+            <div class="inline-flex items-center">
+                <span class="location-dot"></span>
+                <span class="text-sm text-gray-300">HPX-AI</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 設定按鈕 -->
+    <button id="configBtn" class="fixed top-4 right-4 bg-gray-800 bg-opacity-70 p-2 rounded-full hover:bg-opacity-100 transition-all focus:outline-none">
+        <svg class="w-5 h-5 text-teal-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+    </button>
+    
+    <!-- 設定面板 -->
+    <div id="configPanel" class="config-panel">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold text-teal-400">Webhook 設定</h2>
+                <button id="closeConfigBtn" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="mb-6">
+                <label for="webhookUrl" class="block text-sm font-medium text-gray-300 mb-2">n8n Webhook URL</label>
+                <input type="url" id="webhookUrl" class="w-full bg-gray-800 border border-gray-700 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent" placeholder="https://your-n8n-instance.com/webhook/..." />
+                <p class="mt-2 text-sm text-gray-400">請輸入您的 n8n webhook URL，當有人點擊「我會參加」按鈕時，系統會發送通知到此 webhook。</p>
+            </div>
+            
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-300 mb-2">測試資料</label>
+                <div class="bg-gray-800 rounded-md p-3 text-sm text-gray-300 font-mono overflow-x-auto">
+                    {<br>
+                    &nbsp;&nbsp;"event": "attendance_confirmed",<br>
+                    &nbsp;&nbsp;"timestamp": "2023-05-15T12:34:56Z",<br>
+                    &nbsp;&nbsp;"eventDetails": {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"name": "HPX-AI小聚",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"date": "2025/07/23",<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"time": "19:00-21:00"<br>
+                    &nbsp;&nbsp;}<br>
+                    }
+                </div>
+            </div>
+            
+            <button id="saveConfigBtn" class="w-full bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-opacity-50">
+                儲存設定
+            </button>
+        </div>
+    </div>
+    
+    <!-- 通知元素 -->
+    <div id="notification" class="notification">
+        <div class="flex items-center">
+            <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span id="notificationText">操作成功</span>
+        </div>
+    </div>
+
+    <script>
+        // 初始化變數
+        let webhookUrl = localStorage.getItem('hpxAiWebhookUrl') || '';
+        const configBtn = document.getElementById('configBtn');
+        const configPanel = document.getElementById('configPanel');
+        const closeConfigBtn = document.getElementById('closeConfigBtn');
+        const saveConfigBtn = document.getElementById('saveConfigBtn');
+        const webhookUrlInput = document.getElementById('webhookUrl');
+        const confirmBtn = document.getElementById('confirmBtn');
+        const confirmMessage = document.getElementById('confirmMessage');
+        const notification = document.getElementById('notification');
+        
+        // 載入已儲存的 webhook URL
+        if (webhookUrl) {
+            webhookUrlInput.value = webhookUrl;
+        }
+        
+        // 設定面板開關
+        configBtn.addEventListener('click', () => {
+            configPanel.classList.add('active');
+        });
+        
+        closeConfigBtn.addEventListener('click', () => {
+            configPanel.classList.remove('active');
+        });
+        
+        // 儲存設定
+        saveConfigBtn.addEventListener('click', () => {
+            webhookUrl = webhookUrlInput.value.trim();
+            localStorage.setItem('hpxAiWebhookUrl', webhookUrl);
+            configPanel.classList.remove('active');
+            showNotification('Webhook URL 已儲存');
+        });
+        
+        // 確認參加按鈕
+        confirmBtn.addEventListener('click', async function() {
+            // 更新按鈕狀態
+            this.disabled = true;
+            this.classList.remove('hover:bg-teal-600', 'hover:scale-105');
+            this.classList.add('bg-gray-500');
+            this.textContent = '處理中...';
+            
+            // 準備發送的資料
+            const data = {
+                event: "attendance_confirmed",
+                timestamp: new Date().toISOString(),
+                eventDetails: {
+                    name: "HPX-AI小聚",
+                    date: "2025/07/23",
+                    time: "19:00-21:00"
+                }
+            };
+            
+            try {
+                // 檢查是否有設定 webhook URL
+                if (!webhookUrl) {
+                    throw new Error('請先設定 Webhook URL');
+                }
+                
+                // 發送資料到 webhook
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Webhook 發送失敗');
+                }
+                
+                // 顯示成功訊息
+                confirmMessage.classList.remove('hidden');
+                this.textContent = '已確認參加';
+                showNotification('參加確認已發送');
+                
+            } catch (error) {
+                // 處理錯誤
+                console.error('Error:', error);
+                this.textContent = '重試';
+                this.disabled = false;
+                this.classList.remove('bg-gray-500');
+                this.classList.add('hover:bg-teal-600', 'hover:scale-105', 'bg-teal-500');
+                showNotification('錯誤: ' + error.message);
+            }
+        });
+        
+        // 顯示通知
+        function showNotification(message) {
+            document.getElementById('notificationText').textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'963195386530a9cd',t:'MTc1MzE3MzA5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
